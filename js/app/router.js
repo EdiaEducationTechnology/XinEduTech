@@ -8,22 +8,35 @@ $(function() {
 		routes : {
 			'' : 'wizard',
 			'wizard' : 'wizard',
+			'create' : 'wizard',
 			'blog' : 'blog',
+			'about' : 'about',
+			'contact' : 'contact',
 			'blog/:type/:tech' : 'blog'
 		},
 
 		wizard : function(param) {
-			$('#blogpanel').hide();
+			$(this).parent('li').addClass('active');
+			$('.panel').hide();
 			$('#wizardpanel').show();
 
 		},
 		blog : function(type, tech) {
+			$('li').removeClass('active');
+			$('.panel').hide();
 			$('#blogpanel').show();
-			$('#wizardpanel').hide();
 			var view = new app.BlogView({type:type, tech:tech});
-//			view.type = type;
-//			view.tech = tech;
 			$('#blogpanel').html(view.render().el);
+		},
+		contact : function(){
+			$(this).parent('li').addClass('active');
+			$('.panel').hide();
+			$('#contactpanel').show();
+		},
+		about : function(){
+			$(this).parent('li').addClass('active');
+			$('.panel').hide();
+			$('#aboutpanel').show();
 		}
 	});
 
