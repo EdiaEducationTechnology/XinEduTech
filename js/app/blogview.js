@@ -17,9 +17,12 @@ var app = app || {};
 			_.templateSettings = {
 				interpolate : /\{\{(.+?)\}\}/g
 			};
-			var html = $('#blogpanel-hardware-template').html();
-			var template = _.template(html)
-			this.$el.html(template(this.options));
+			var self = this;
+			var $div = $('<div>').load('templates/blogtemplate-'+this.options.type+'.html', function(data){
+				var html = $(this).html();
+				var template = _.template(html)
+				self.$el.html(template(self.options));
+			});
 			return this;
 		}
 	});
