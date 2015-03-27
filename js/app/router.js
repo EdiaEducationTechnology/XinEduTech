@@ -24,9 +24,11 @@ $(function() {
 		blog : function(type, tech) {
 			$('li').removeClass('active');
 			$('.panel').hide();
-			$('#blogpanel').show();
+			$('.panel.twitter').show();
 			var view = new app.BlogView({type:type, tech:tech});
+			var content = view.render().el;
 			$('#blogpanel').html(view.render().el);
+			$('#blogpanel').show();
 		},
 		contact : function(){
 			$(this).parent('li').addClass('active');
